@@ -29,9 +29,10 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
-        theme: ThemeData(
-        
-          primarySwatch: Colors.blue,
+        theme: ThemeData(      
+          colorScheme: 
+          ColorScheme.fromSwatch(primarySwatch: Colors.amber).copyWith(secondary: Colors.deepOrange),
+          canvasColor: Color.fromRGBO(33,57,98,1)
         ),
         routes: {
           '/': (ctx) => const MedicoesScreen()

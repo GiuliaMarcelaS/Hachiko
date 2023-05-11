@@ -21,6 +21,8 @@ class _MedicoesScreenState extends State<MedicoesScreen> {
     super.initState();
     Provider.of<ListaDeMedicoes>(context, listen: false).carregaMedicoes();
   }
+
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +30,7 @@ class _MedicoesScreenState extends State<MedicoesScreen> {
         title: Text('Medições'),
       ),
       body: 
-          MedicoesGrid()
+          MedicoesGrid(),
       );
   }
 }

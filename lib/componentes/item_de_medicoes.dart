@@ -11,7 +11,7 @@ class ItemDeMedicoes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-        color: Colors.yellow,
+        color: Colors.white,
         child: Column(
           children: [
             Text(
