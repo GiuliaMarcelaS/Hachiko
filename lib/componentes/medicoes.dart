@@ -4,8 +4,8 @@ import 'dart:convert';
 
 class Medicoes with ChangeNotifier{
   final String id;
-  final String batimento;
-  final String temperatura;
+  final int batimento;
+  final int temperatura;
 
   Medicoes({
     required this.id,
