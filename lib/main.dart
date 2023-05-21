@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         theme: ThemeData(      
           colorScheme: 
-          ColorScheme.fromSwatch(primarySwatch: Colors.red).copyWith(secondary: Colors.deepOrange),
+          ColorScheme.fromSwatch(primarySwatch: Colors.amber).copyWith(secondary: Colors.deepOrange),
           canvasColor: Color.fromRGBO(33,57,98,1)
         ),
         routes: {
