@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:hachiko/componentes/lista_de_medicoes.dart';
+import 'package:hachiko/screens/selecionar_especie_screen.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 import 'componentes/medicoes.dart';
@@ -35,7 +36,8 @@ class MyApp extends StatelessWidget {
           canvasColor: Color.fromRGBO(33,57,98,1)
         ),
         routes: {
-          '/': (ctx) => const MedicoesScreen()
+          '/': (ctx) => const SelecionarEspecieScreen(),
+          '/medicoes-screen': (ctx) => const MedicoesScreen(),
           },
       ),
     );
