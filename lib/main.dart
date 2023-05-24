@@ -1,7 +1,9 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:hachiko/componentes/dados_pet.dart';
 import 'package:hachiko/componentes/lista_de_medicoes.dart';
+import 'package:hachiko/screens/porte_screen.dart';
 import 'package:hachiko/screens/selecionar_especie_screen.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
@@ -26,6 +28,8 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (_) => ListaDeMedicoes()),
+        ChangeNotifierProvider(
+          create: (_) => DadosPet()),
           
       ],
       child: MaterialApp(
@@ -38,6 +42,7 @@ class MyApp extends StatelessWidget {
         routes: {
           '/': (ctx) => const SelecionarEspecieScreen(),
           '/medicoes-screen': (ctx) => const MedicoesScreen(),
+          '/porte-screen': (ctx) => const PorteScreen(),
           },
       ),
     );

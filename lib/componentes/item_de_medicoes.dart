@@ -1,6 +1,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:hachiko/componentes/medicoes.dart';
+import 'package:provider/provider.dart';
+
+import 'dados_pet.dart';
 
 class ItemDeMedicoes extends StatelessWidget {
   final Medicoes medicoes;
@@ -11,7 +14,10 @@ class ItemDeMedicoes extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final dados = Provider.of<DadosPet>(context);
     bool teste = true;
+    Text mensagemTemperatura = dados.analiseTemperatura(medicoes.temperatura);
+    Text mensagemBatimentos = dados.analiseBatimentos(medicoes.batimento);
     return Card(
         color: Colors.white,
         child: Column(
@@ -28,9 +34,8 @@ class ItemDeMedicoes extends StatelessWidget {
               "Temperatura:${medicoes.temperatura.toString()}",
               textAlign: TextAlign.center,
             ),
-            medicoes.temperatura > 39? Text('temperatura alta',style: TextStyle(color: Colors.red),): Text('temperatura normal',style: TextStyle(color: Colors.green)),
-            medicoes.batimento>90 ? Text('bpm alto',style: TextStyle(color: Colors.red),): Text('bpm normal',style: TextStyle(color: Colors.green)),
-
+            mensagemTemperatura,
+            mensagemBatimentos
           ],
         ),
       );
