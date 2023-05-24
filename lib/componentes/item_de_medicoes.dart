@@ -1,18 +1,3 @@
-<<<<<<< HEAD
-// import 'package:flutter/src/widgets/framework.dart';
-// import 'package:flutter/src/widgets/placeholder.dart';
-// import 'package:hachiko/componentes/medicoes.dart';
-
-// class ItemDeMedicoes extends StatelessWidget {
-//   final Medicoes medicao;
-//   const ItemDeMedicoes({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return const Placeholder();
-//   }
-// }
-=======
 
 import 'package:flutter/material.dart';
 import 'package:hachiko/componentes/medicoes.dart';
@@ -32,14 +17,26 @@ class ItemDeMedicoes extends StatelessWidget {
     final dados = Provider.of<DadosPet>(context);
     bool teste = true;
     Text mensagemTemperatura = dados.analiseTemperatura(medicoes.temperatura);
-    Text mensagemBatimentos = dados.analiseBatimentos(medicoes.batimento);
+    Text mensagemBatimentos = dados.analiseBatimentos(medicoes.batimento,medicoes.dia,medicoes.mes,medicoes.ano);
     return Card(
         color: Colors.white,
         child: Column(
           children: [
-            Text(
-              medicoes.id,
-              textAlign: TextAlign.center,
+            Row(
+              children: [
+                Text(
+                  medicoes.dia.toString(),
+                  textAlign: TextAlign.center,
+                ),
+                Text(
+                  "/${medicoes.mes.toString()}/",
+                  textAlign: TextAlign.center,
+                ),
+                Text(
+                  medicoes.ano.toString(),
+                  textAlign: TextAlign.center,
+                ),
+              ],
             ),
             Text(
               "Batimentos:${medicoes.batimento.toString()}",
@@ -50,10 +47,10 @@ class ItemDeMedicoes extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             mensagemTemperatura,
-            mensagemBatimentos
+            mensagemBatimentos,
+            Text(dados.indicadorRisco.toString())
           ],
         ),
       );
   }
 }
->>>>>>> a8b0cf919273573eacbaeb39ed3e2a6307098727

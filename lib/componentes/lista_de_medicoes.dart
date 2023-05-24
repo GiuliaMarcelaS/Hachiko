@@ -23,7 +23,11 @@ class ListaDeMedicoes with ChangeNotifier{
   print(dados);
   dados.forEach((id, dados){
     _items.add(Medicoes(
-      id: id, 
+      id: id,
+      dia: dados['dia'], 
+      mes: dados['mes'], 
+      ano: dados['ano'], 
+      horario: dados['horario'], 
       batimento: dados['batimento'], 
       temperatura: dados['temperatura'],
       )
