@@ -18,6 +18,7 @@ class ListaDeMedicoes with ChangeNotifier{
   }
 
   Future<void> carregaMedicoes() async{
+    _items.clear();
   final response = await http.get(Uri.parse("https://hachiko-54054-default-rtdb.firebaseio.com/medicoesTeste/.json"));
   Map<dynamic, dynamic> dados = jsonDecode(response.body);
   print(dados);

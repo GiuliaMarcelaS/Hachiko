@@ -16,43 +16,52 @@ class TamanhoCachorro extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
      final dados = Provider.of<DadosPet>(context);
-    return Column(
-        children: [
-          InkWell(
-            onTap: ()=>dados.atribuiC1(dados),
-            borderRadius: BorderRadius.circular(50),
-            child: Container(
-              child: Text('Recém Nascido',style: TextStyle(fontSize: 30)),
-              margin: EdgeInsets.symmetric(vertical: 10,horizontal: 10),
-              color: dados.botaoB==1?Colors.yellow:Colors.white,
-              padding: EdgeInsets.all(50),
+    return Center(
+      child: Column(
+          children: [
+            Container(
+              child: ElevatedButton(
+                onPressed: ()=>dados.atribuiC1(dados),
+                child: Text('Recém Nascido',style: TextStyle(fontSize: 20)),
+                style: dados.botaoB==1? ElevatedButton.styleFrom(backgroundColor: null):ElevatedButton.styleFrom(backgroundColor: Color.fromARGB(255, 255, 255, 255)),
+              ),
+              width: 400,
+              height: 50,
+              margin: EdgeInsets.only(bottom: 20, top:20),
+            ),
+              Container(
+                child: ElevatedButton(
+                onPressed: ()=>dados.atribuiC2(dados),
+                child: Text('Pequeno Porte',style: TextStyle(fontSize: 20)),
+                style: dados.botaoB==2? ElevatedButton.styleFrom(backgroundColor: null):ElevatedButton.styleFrom(backgroundColor: Color.fromARGB(255, 255, 255, 255)),
+            ),
+             width: 400,
+             height: 50,
+             margin: EdgeInsets.only(bottom: 20),
+              ),
+              Container(
+                child: ElevatedButton(
+                onPressed: ()=>dados.atribuiC3(dados),
+                child: Text('Grande Porte',style: TextStyle(fontSize: 20)),
+                style: dados.botaoB==3? ElevatedButton.styleFrom(backgroundColor: null):ElevatedButton.styleFrom(backgroundColor: Color.fromARGB(255, 255, 255, 255)),
+            ),
+             width: 400,
+             height: 50,
+             margin: EdgeInsets.only(bottom: 20),
+              ),
+            Container(
+            alignment: Alignment.bottomRight,
+            margin: EdgeInsets.only(right: 20,top: 270),
+            child: ElevatedButton(
+              child: Text('Próximo'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color.fromARGB(255,194, 102, 26)
+              ),
+              onPressed:()=>_medicoes(context),
             ),
           ),
-          InkWell(
-            onTap: ()=>dados.atribuiC2(dados),
-            borderRadius: BorderRadius.circular(50),
-            child: Container(
-              child: Text('Pequeno Porte',style: TextStyle(fontSize: 30)),
-              margin: EdgeInsets.symmetric(vertical: 0,horizontal: 10),
-              color: dados.botaoB==2?Colors.yellow:Colors.white,
-              padding: EdgeInsets.all(50),
-            ),
-          ),
-          InkWell(
-            onTap: ()=>dados.atribuiC3(dados),
-            borderRadius: BorderRadius.circular(50),
-            child: Container(
-              child: Text('Grande porte',style: TextStyle(fontSize: 30)),
-              margin: EdgeInsets.symmetric(vertical: 10,horizontal: 10),
-              color: dados.botaoB==3?Colors.yellow:Colors.white,
-              padding: EdgeInsets.all(50),
-            ),
-          ),
-          IconButton(
-            icon: Icon(Icons.arrow_circle_right),
-            onPressed:()=>_medicoes(context),
-          ),
-        ],
-      );
+          ],
+        ),
+    );
   }
 }

@@ -25,33 +25,46 @@ class _SelecionarEspecieScreenState extends State<SelecionarEspecieScreen> {
     final dados = Provider.of<DadosPet>(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text("Selecione a espécie"),
+        centerTitle: true,
+        title: Text("O seu pet corresponde a qual animal?"),
       ),
       body: Column(
         children: [
-          InkWell(
-            onTap: ()=>dados.atribuiCachorro(dados),
-            borderRadius: BorderRadius.circular(50),
-            child: Container(
-              child: Text('Cachorro',style: TextStyle(fontSize: 30)),
-              margin: EdgeInsets.symmetric(vertical: 60,horizontal: 10),
-              color: dados.botaoA==1?Colors.yellow:Colors.white,
-              padding: EdgeInsets.all(50),
+          Center(
+            child: InkWell(
+              onTap: ()=>dados.atribuiCachorro(dados),
+              borderRadius: BorderRadius.circular(50),
+              child: Container(
+                child:ClipRRect(borderRadius: BorderRadius.circular(40),child: Image.asset('assets\\images\\cachorro.png',fit: BoxFit.fill,)),
+                color: dados.botaoA==1?Colors.yellow:Color.fromRGBO(33,57,98,1),
+                width: 170,
+                height: 190,
+                margin: EdgeInsets.only(bottom: 50, top: 20),
+              ),
             ),
           ),
-          InkWell(
-            onTap: ()=>dados.atribuiGato(dados),
-            borderRadius: BorderRadius.circular(50),
-            child: Container(
-              child: Text('Gato',style: TextStyle(fontSize: 30),),
-              margin: EdgeInsets.symmetric(vertical: 0,horizontal: 10),
-              color:dados.botaoA==2?Colors.yellow:Colors.white,
-              padding: EdgeInsets.all(60),
+          Center(
+            child: InkWell(
+              onTap: ()=>dados.atribuiGato(dados),
+              borderRadius: BorderRadius.circular(50),
+              child: Container(
+                child: ClipRRect(borderRadius: BorderRadius.circular(40),child: Image.asset('assets\\images\\gato.png')),
+                color:dados.botaoA==2?Colors.yellow: Color.fromRGBO(33,57,98,1),
+                width: 176,
+                height: 200,
+              ),
             ),
           ),
-          IconButton(
-            icon: Icon(Icons.arrow_circle_right),
-            onPressed:()=>_porte(context),
+          Container(
+            alignment: Alignment.bottomRight,
+            margin: EdgeInsets.only(right: 20,top: 40),
+            child: ElevatedButton(
+              child: Text('Próximo'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color.fromARGB(255,194, 102, 26)
+              ),
+              onPressed:()=>_porte(context),
+            ),
           ),
         ],
       )

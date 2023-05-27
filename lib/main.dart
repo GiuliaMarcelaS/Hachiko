@@ -37,7 +37,8 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(      
           colorScheme: 
           ColorScheme.fromSwatch(primarySwatch: Colors.amber).copyWith(secondary: Colors.deepOrange),
-          canvasColor: Color.fromRGBO(33,57,98,1)
+          canvasColor: Color.fromRGBO(33,57,98,1),
+          fontFamily: 'OpenSans'
         ),
         routes: {
           '/': (ctx) => const SelecionarEspecieScreen(),

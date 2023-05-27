@@ -16,7 +16,7 @@ class ItemDeMedicoes extends StatelessWidget {
   Widget build(BuildContext context) {
     final dados = Provider.of<DadosPet>(context);
     bool teste = true;
-    Text mensagemTemperatura = dados.analiseTemperatura(medicoes.temperatura);
+    Text mensagemTemperatura = dados.analiseTemperatura(medicoes.temperatura,medicoes.dia,medicoes.mes,medicoes.ano);
     Text mensagemBatimentos = dados.analiseBatimentos(medicoes.batimento,medicoes.dia,medicoes.mes,medicoes.ano);
     return Card(
         color: Colors.white,
@@ -39,16 +39,15 @@ class ItemDeMedicoes extends StatelessWidget {
               ],
             ),
             Text(
-              "Batimentos:${medicoes.batimento.toString()}",
+              "Temperatura:${medicoes.temperatura.toString()}",
               textAlign: TextAlign.center,
             ),
             Text(
-              "Temperatura:${medicoes.temperatura.toString()}",
+              "Batimentos:${medicoes.batimento.toString()}",
               textAlign: TextAlign.center,
             ),
             mensagemTemperatura,
             mensagemBatimentos,
-            Text(dados.indicadorRisco.toString())
           ],
         ),
       );

@@ -26,6 +26,7 @@ class PorteScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text('Selecione o tamanho do pet'),
       ),
       body:especie,

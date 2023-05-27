@@ -23,15 +23,28 @@ class _MedicoesScreenState extends State<MedicoesScreen> {
     Provider.of<ListaDeMedicoes>(context, listen: false).carregaMedicoes();
   }
 
+  Future<void> refreshMedicoes(BuildContext context){
+    return Provider.of<ListaDeMedicoes>(
+      context,
+      listen: false,
+    ).carregaMedicoes();
+  }
+
   
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: Text('medições'),
       ),
       body: 
-          MedicoesGrid(),
+          Column(
+            children: [
+              MedicoesGrid(),
+              TextButton(onPressed:()=> refreshMedicoes(context), child: Text("atualizar"))
+            ],
+          ),
       );
   }
 }
