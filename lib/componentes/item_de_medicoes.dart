@@ -25,15 +25,15 @@ class ItemDeMedicoes extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  medicoes.dia.toString(),
+                  medicoes.dia,
                   textAlign: TextAlign.center,
                 ),
                 Text(
-                  "/${medicoes.mes.toString()}/",
+                  "/${medicoes.mes}/",
                   textAlign: TextAlign.center,
                 ),
                 Text(
-                  medicoes.ano.toString(),
+                  medicoes.ano,
                   textAlign: TextAlign.center,
                 ),
               ],
@@ -47,7 +47,9 @@ class ItemDeMedicoes extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             mensagemTemperatura,
+            Text(dados.indicadorRiscoT.toString()),
             mensagemBatimentos,
+            Text(dados.indicadorRiscoB.toString()),
           ],
         ),
       );

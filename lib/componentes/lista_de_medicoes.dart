@@ -18,22 +18,20 @@ class ListaDeMedicoes with ChangeNotifier{
   }
 
   Future<void> carregaMedicoes() async{
-    _items.clear();
-  final response = await http.get(Uri.parse("https://hachiko-54054-default-rtdb.firebaseio.com/medicoesTeste/.json"));
+  final response = await http.get(Uri.parse("https://hachiko-54054-default-rtdb.firebaseio.com/medicoes/.json"));
   Map<dynamic, dynamic> dados = jsonDecode(response.body);
   print(dados);
-  dados.forEach((id, dados){
     _items.add(Medicoes(
-      id: id,
-      dia: dados['dia'], 
-      mes: dados['mes'], 
-      ano: dados['ano'], 
-      horario: dados['horario'], 
-      batimento: dados['batimento'], 
-      temperatura: dados['temperatura'],
+      ano: dados['ANO'], 
+      batimento: dados['BATIMENTOS'], 
+      dia: dados['DIA'], 
+      diasemana: dados['DIASEMANA'],
+      hora: dados['HORA'],
+      mes: dados['MES'], 
+      minuto: dados['MINUTO'], 
+      temperatura: dados['TEMPERATURA'],
       )
       );
-  });
   notifyListeners();
 }
 }

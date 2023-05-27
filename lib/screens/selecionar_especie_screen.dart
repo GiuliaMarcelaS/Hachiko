@@ -35,7 +35,7 @@ class _SelecionarEspecieScreenState extends State<SelecionarEspecieScreen> {
               onTap: ()=>dados.atribuiCachorro(dados),
               borderRadius: BorderRadius.circular(50),
               child: Container(
-                child:ClipRRect(borderRadius: BorderRadius.circular(40),child: Image.asset('assets\\images\\cachorro.png',fit: BoxFit.fill,)),
+                child:ClipRRect(borderRadius: BorderRadius.circular(40),child: Image.asset('assets/images/cachorro.png',fit: BoxFit.fill,)),
                 color: dados.botaoA==1?Colors.yellow:Color.fromRGBO(33,57,98,1),
                 width: 170,
                 height: 190,
@@ -48,7 +48,7 @@ class _SelecionarEspecieScreenState extends State<SelecionarEspecieScreen> {
               onTap: ()=>dados.atribuiGato(dados),
               borderRadius: BorderRadius.circular(50),
               child: Container(
-                child: ClipRRect(borderRadius: BorderRadius.circular(40),child: Image.asset('assets\\images\\gato.png')),
+                child: ClipRRect(borderRadius: BorderRadius.circular(40),child: Image.asset('assets/images/gato.png')),
                 color:dados.botaoA==2?Colors.yellow: Color.fromRGBO(33,57,98,1),
                 width: 176,
                 height: 200,

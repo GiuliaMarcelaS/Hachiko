@@ -3,22 +3,24 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class Medicoes with ChangeNotifier{
-  final String id;
-  final int dia;
-  final int mes;
-  final int ano;
-  final String horario;
+  final String dia;
+  final String mes;
+  final String ano;
+  final String hora;
+  final String minuto;
   final double batimento;
   final double temperatura;
+  final String diasemana;
 
   Medicoes({
-    required this.id,
     required this.dia,
     required this.mes,
     required this.ano,
-    required this.horario,
+    required this.hora,
+    required this.minuto,
     required this.batimento,
     required this.temperatura,
+    required this.diasemana,
   });
   
 }
