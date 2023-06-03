@@ -8,7 +8,7 @@ class Medicoes with ChangeNotifier{
   final String ano;
   final String hora;
   final String minuto;
-  final double batimento;
+  final int batimento;
   final double temperatura;
   final String diasemana;
 

@@ -36,6 +36,14 @@ class ItemDeMedicoes extends StatelessWidget {
                   medicoes.ano,
                   textAlign: TextAlign.center,
                 ),
+                Text(
+                  '  ${medicoes.hora}:',
+                  textAlign: TextAlign.center,
+                ),
+                Text(
+                  medicoes.minuto,
+                  textAlign: TextAlign.center,
+                ),
               ],
             ),
             Text(
@@ -47,9 +55,9 @@ class ItemDeMedicoes extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             mensagemTemperatura,
-            Text(dados.indicadorRiscoT.toString()),
+           // Text(dados.indicadorRiscoT.toString()),
             mensagemBatimentos,
-            Text(dados.indicadorRiscoB.toString()),
+           // Text(dados.indicadorRiscoB.toString()),
           ],
         ),
       );

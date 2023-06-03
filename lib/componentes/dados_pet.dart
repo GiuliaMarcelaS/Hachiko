@@ -112,7 +112,7 @@ class DadosPet with ChangeNotifier{
   }
  }
 
- analiseBatimentos(double batimentos, String mdia, String mmes, String mano){
+ analiseBatimentos(int batimentos, String mdia, String mmes, String mano){
   if(dia==''&&mes==''&&ano==''){
         dia = mdia;
         mes = mmes;
