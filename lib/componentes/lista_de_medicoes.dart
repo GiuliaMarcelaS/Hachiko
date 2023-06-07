@@ -32,6 +32,37 @@ class ListaDeMedicoes with ChangeNotifier{
       temperatura: dados['TEMPERATURA'],
       )
       );
+       http.post(Uri.parse("https://hachiko-54054-default-rtdb.firebaseio.com/medicoesAnteriores.json"),
+   body: jsonEncode({
+      "ano": dados['ANO'], 
+      "batimento":  dados['BATIMENTOS'], 
+      "dia": dados['DIA'], 
+      "diasemana":dados['DIASEMANA'],
+      "hora": dados['HORA'],
+      "mes":dados['MES'], 
+      "minuto": dados['MINUTO'], 
+      "temperatura": dados['TEMPERATURA'],
+   })
+   );
   notifyListeners();
 }
+  void salvaMedicoes(Medicoes medicoes) {
+   http.post(Uri.parse("https://hachiko-54054-default-rtdb.firebaseio.com/medicoesAnteriores.json"),
+   body: jsonEncode({
+      "ano": medicoes.ano, 
+      "batimento": medicoes.batimento, 
+      "dia": medicoes.dia, 
+      "diasemana": medicoes.diasemana,
+      "hora": medicoes.hora,
+      "mes": medicoes.mes, 
+      "minuto": medicoes.minuto, 
+      "temperatura": medicoes.temperatura,
+   })
+   );
+   _items.add(medicoes);
+   print(medicoes);
+  notifyListeners();
+}
+
+
 }

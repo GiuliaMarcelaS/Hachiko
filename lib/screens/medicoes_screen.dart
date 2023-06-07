@@ -33,6 +33,7 @@ class _MedicoesScreenState extends State<MedicoesScreen> {
   
   @override
   Widget build(BuildContext context) {
+    final lista = Provider.of<ListaDeMedicoes>(context);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -42,7 +43,8 @@ class _MedicoesScreenState extends State<MedicoesScreen> {
           Column(
             children: [
               MedicoesGrid(),
-              TextButton(onPressed:()=> refreshMedicoes(context), child: Text("atualizar"))
+              TextButton(onPressed:()=> refreshMedicoes(context), child: Text("atualizar")),
+             // TextButton(onPressed:()=> lista.salvaMedicoes, child: Text("atualizar")),
             ],
           ),
       );
