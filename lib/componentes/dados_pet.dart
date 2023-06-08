@@ -13,8 +13,10 @@ class DadosPet with ChangeNotifier{
   String dia;
   String mes;
   String ano;
+  Set ids;
 
-  DadosPet({
+  DadosPet(
+    this.ids,{
    this.tipoPet = 0,
    this.especiePet = 0,
    this.botao1 = false,
@@ -27,7 +29,8 @@ class DadosPet with ChangeNotifier{
    this.dia='',
    this.mes='',
    this.ano='',
-  });
+  }
+  );
 
   atribuiCachorro (DadosPet dados){
   especiePet = 1;
@@ -81,7 +84,7 @@ class DadosPet with ChangeNotifier{
     else{
       if(dia == mdia&& mes==mmes&& ano==mano){
         indicadorRiscoT++;
-        if(indicadorRiscoT>=6){
+        if(indicadorRiscoT>=3){
           return Text('temperatura alterada.\n\n OBS: ${'muitas medições realizadas hoje apresentaram temperatura alterada, marque um exame para seu pet!\n'.toUpperCase()}',textAlign: TextAlign.center,style: TextStyle(color:  Color.fromARGB(255, 255, 0, 0)));
         }
       }
@@ -99,7 +102,7 @@ class DadosPet with ChangeNotifier{
     else{
       if(dia == mdia&& mes==mmes&& ano==mano){
         indicadorRiscoT++;
-        if(indicadorRiscoT>=6){
+        if(indicadorRiscoT>=3){
           return Text('temperatura alterada.\n\n OBS: ${'muitas medições realizadas hoje apresentaram temperatura alterada, marque um exame para seu pet!\n'.toUpperCase()}',textAlign: TextAlign.center,style: TextStyle(color:  Color.fromARGB(255, 255, 0, 0)));
         }
       }
@@ -112,7 +115,8 @@ class DadosPet with ChangeNotifier{
   }
  }
 
- analiseBatimentos(int batimentos, String mdia, String mmes, String mano){
+ analiseBatimentos(String id,int batimentos, String mdia, String mmes, String mano){
+  ids.add(id);
   if(dia==''&&mes==''&&ano==''){
         dia = mdia;
         mes = mmes;
@@ -126,9 +130,10 @@ class DadosPet with ChangeNotifier{
       return  Text('frequência cardíaca normal',style: TextStyle(color:  Color.fromARGB(255, 0,255, 0)));
     }
      else{
-       if(dia == mdia&& mes==mmes&& ano==mano){
+       if(dia == mdia&& mes==mmes&& ano==mano&&(ids.contains(id)==false)){
         indicadorRiscoB++;
-        if(indicadorRiscoB>=6){
+        print(ids);
+        if(indicadorRiscoB>=3){
           return Text('frequência cardíaca alterada.\n\n OBS: ${'muitas medições realizadas hoje apresentaram frequência cardíaca alterada, marque um exame para seu pet!'.toUpperCase()}',textAlign: TextAlign.center,style: TextStyle(color:  Color.fromARGB(255, 255, 0, 0)));
         }
       }
@@ -144,9 +149,9 @@ class DadosPet with ChangeNotifier{
       return  Text('frequência cardíaca normal',style: TextStyle(color:  Color.fromARGB(255, 0,255, 0)));
     }
      else{
-       if(dia == mdia&& mes==mmes&& ano==mano){
+       if(dia == mdia&& mes==mmes&& ano==mano&&(ids.contains(id)==false)){
         indicadorRiscoB++;
-        if(indicadorRiscoB>=6){
+        if(indicadorRiscoB>=3){
           return Text('frequência cardíaca alterada.\n\n OBS: ${'muitas medições realizadas hoje apresentaram frequência cardíaca alterada, marque um exame para seu pet!'.toUpperCase()}',textAlign: TextAlign.center,style: TextStyle(color:  Color.fromARGB(255, 255, 0, 0)));
         }
       }
@@ -162,9 +167,9 @@ class DadosPet with ChangeNotifier{
       return  Text('frequência cardíaca normal',style: TextStyle(color:  Color.fromARGB(255, 0,255, 0)));
     }
      else{
-       if(dia == mdia&& mes==mmes&& ano==mano){
+       if(dia == mdia&& mes==mmes&& ano==mano&&(ids.contains(id)==false)){
         indicadorRiscoB++;
-        if(indicadorRiscoB>=6){
+        if(indicadorRiscoB>=3){
           return Text('frequência cardíaca alterada.\n\n OBS: ${'muitas medições realizadas hoje apresentaram frequência cardíaca alterada, marque um exame para seu pet!'.toUpperCase()}',textAlign: TextAlign.center,style: TextStyle(color:  Color.fromARGB(255, 255, 0, 0)));
         }
       }
@@ -180,9 +185,9 @@ class DadosPet with ChangeNotifier{
       return  Text('frequência cardíaca normal',style: TextStyle(color:  Color.fromARGB(255, 0,255, 0)));
     }
      else{
-       if(dia == mdia&& mes==mmes&& ano==mano){
+       if(dia == mdia&& mes==mmes&& ano==mano&&(ids.contains(id)==false)){
         indicadorRiscoB++;
-        if(indicadorRiscoB>=6){
+        if(indicadorRiscoB>=3){
           return Text('frequência cardíaca alterada.\n\n OBS: ${'muitas medições realizadas hoje apresentaram frequência cardíaca alterada, marque um exame para seu pet!'.toUpperCase()}',textAlign: TextAlign.center,style: TextStyle(color:  Color.fromARGB(255, 255, 0, 0)));
         }
       }
@@ -198,9 +203,9 @@ class DadosPet with ChangeNotifier{
       return  Text('frequência cardíaca normal',style: TextStyle(color:  Color.fromARGB(255, 0,255, 0)));
     }
      else{
-      if(dia == mdia&& mes==mmes&& ano==mano){
+      if(dia == mdia&& mes==mmes&& ano==mano&&(ids.contains(id)==false)){
         indicadorRiscoB++;
-        if(indicadorRiscoB>=6){
+        if(indicadorRiscoB>=3){
           return Text('frequência cardíaca alterada.\n\n OBS: ${'muitas medições realizadas hoje apresentaram frequência cardíaca alterada, marque um exame para seu pet!'.toUpperCase()}',
           textAlign: TextAlign.center,
           style: TextStyle(color:  Color.fromARGB(255, 255, 0, 0)

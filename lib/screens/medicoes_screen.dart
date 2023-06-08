@@ -18,10 +18,10 @@ class MedicoesScreen extends StatefulWidget {
 class _MedicoesScreenState extends State<MedicoesScreen> {
 
   @override
-  void initState() {
-    super.initState();
-    Provider.of<ListaDeMedicoes>(context, listen: false).carregaMedicoes();
-  }
+  // void initState() {
+  //   super.initState();
+  //   Provider.of<ListaDeMedicoes>(context, listen: false).carregaMedicoes();
+  // }
 
   Future<void> refreshMedicoes(BuildContext context){
     return Provider.of<ListaDeMedicoes>(
@@ -42,7 +42,13 @@ class _MedicoesScreenState extends State<MedicoesScreen> {
       body: 
           Column(
             children: [
-              MedicoesGrid(),
+              RefreshIndicator(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: MedicoesGrid(),
+                ),
+                onRefresh: ()=>refreshMedicoes(context),
+                ),
               TextButton(onPressed:()=> refreshMedicoes(context), child: Text("atualizar")),
              // TextButton(onPressed:()=> lista.salvaMedicoes, child: Text("atualizar")),
             ],

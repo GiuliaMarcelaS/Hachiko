@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => ListaDeMedicoes()),
         ChangeNotifierProvider(
-          create: (_) => DadosPet()),
+          create: (_) => DadosPet({})),
           
       ],
       child: MaterialApp(

@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 
-class ListaDeMedicoes with ChangeNotifier{
+class  ListaDeMedicoes with ChangeNotifier{
 
   final List<Medicoes> _items =  [];
 
@@ -21,17 +21,17 @@ class ListaDeMedicoes with ChangeNotifier{
   final response = await http.get(Uri.parse("https://hachiko-54054-default-rtdb.firebaseio.com/medicoes/.json"));
   Map<dynamic, dynamic> dados = jsonDecode(response.body);
   print(dados);
-    _items.add(Medicoes(
-      ano: dados['ANO'], 
-      batimento: dados['BATIMENTOS'], 
-      dia: dados['DIA'], 
-      diasemana: dados['DIASEMANA'],
-      hora: dados['HORA'],
-      mes: dados['MES'], 
-      minuto: dados['MINUTO'], 
-      temperatura: dados['TEMPERATURA'],
-      )
-      );
+    // _items.add(Medicoes(
+    //   ano: dados['ANO'], 
+    //   batimento: dados['BATIMENTOS'], 
+    //   dia: dados['DIA'], 
+    //   diasemana: dados['DIASEMANA'],
+    //   hora: dados['HORA'],
+    //   mes: dados['MES'], 
+    //   minuto: dados['MINUTO'], 
+    //   temperatura: dados['TEMPERATURA'],
+    //   )
+    //   );
        http.post(Uri.parse("https://hachiko-54054-default-rtdb.firebaseio.com/medicoesAnteriores.json"),
    body: jsonEncode({
       "ano": dados['ANO'], 
@@ -44,6 +44,23 @@ class ListaDeMedicoes with ChangeNotifier{
       "temperatura": dados['TEMPERATURA'],
    })
    );
+   final response2 = await http.get(Uri.parse("https://hachiko-54054-default-rtdb.firebaseio.com/medicoesAnteriores/.json"));
+ _items.clear();
+  Map<dynamic, dynamic> dados2 = jsonDecode(response2.body);
+  print(dados2);
+  dados2.forEach((id, dados2) { 
+  _items.add(Medicoes(
+      id:id,
+      ano: dados2['ano'], 
+      batimento: dados2['batimento'], 
+      dia: dados2['dia'], 
+      diasemana: dados2['diasemana'],
+      hora: dados2['hora'],
+      mes: dados2['mes'], 
+      minuto: dados2['minuto'], 
+      temperatura: dados2['temperatura'],
+      )
+      );});
   notifyListeners();
 }
   void salvaMedicoes(Medicoes medicoes) {

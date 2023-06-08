@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class Medicoes with ChangeNotifier{
+  final String id;
   final String dia;
   final String mes;
   final String ano;
@@ -13,6 +14,7 @@ class Medicoes with ChangeNotifier{
   final String diasemana;
 
   Medicoes({
+    required this.id,
     required this.dia,
     required this.mes,
     required this.ano,
