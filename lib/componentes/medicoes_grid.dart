@@ -17,7 +17,7 @@ class MedicoesGrid extends StatelessWidget {
     final provider = Provider.of<ListaDeMedicoes>(context);
     final List<Medicoes> medicoesCarregadas = provider.items;
     return SizedBox(
-      height: 700,
+      height: 480,
       child: ListView.builder(
         padding: const EdgeInsets.all(10),
         itemCount: medicoesCarregadas.length,

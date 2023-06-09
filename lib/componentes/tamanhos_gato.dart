@@ -11,7 +11,9 @@ class TamanhoGato extends StatelessWidget {
   _medicoes(BuildContext context){
       Navigator.of(context).pushNamed('/medicoes-screen');
 }
-  
+  _home(BuildContext context){
+      Navigator.of(context).pushNamed('/home-screen');
+}
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +50,7 @@ class TamanhoGato extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color.fromARGB(255,194, 102, 26)
               ),
-              onPressed:()=>_medicoes(context),
+              onPressed:()=>_home(context),
             ),
           ),
         ],

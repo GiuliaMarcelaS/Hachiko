@@ -1,8 +1,12 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:hachiko/componentes/auth.dart';
 import 'package:hachiko/componentes/dados_pet.dart';
 import 'package:hachiko/componentes/lista_de_medicoes.dart';
+import 'package:hachiko/screens/auth_or_home_screen.dart';
+import 'package:hachiko/screens/auth_screen.dart';
+import 'package:hachiko/screens/home_screen.dart';
 import 'package:hachiko/screens/porte_screen.dart';
 import 'package:hachiko/screens/selecionar_especie_screen.dart';
 import 'package:http/http.dart' as http;
@@ -29,6 +33,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => ListaDeMedicoes()),
         ChangeNotifierProvider(
+          create: (_) => Auth()),
+        ChangeNotifierProvider(
           create: (_) => DadosPet({})),
           
       ],
@@ -41,9 +47,12 @@ class MyApp extends StatelessWidget {
           fontFamily: 'OpenSans'
         ),
         routes: {
-          '/': (ctx) => const SelecionarEspecieScreen(),
+          '/': (ctx) => const AuthOrHomePage(),
           '/medicoes-screen': (ctx) => const MedicoesScreen(),
           '/porte-screen': (ctx) => const PorteScreen(),
+          '/home-screen': (ctx) => HomeScreen(),
+          '/auth-screen': (ctx) => AuthScreen(),
+          '/especie-screen': (ctx) => SelecionarEspecieScreen(),
           },
       ),
     );
