@@ -21,17 +21,6 @@ class  ListaDeMedicoes with ChangeNotifier{
   final response = await http.get(Uri.parse("https://hachiko-54054-default-rtdb.firebaseio.com/medicoes/.json"));
   Map<dynamic, dynamic> dados = jsonDecode(response.body);
   print(dados);
-    // _items.add(Medicoes(
-    //   ano: dados['ANO'], 
-    //   batimento: dados['BATIMENTOS'], 
-    //   dia: dados['DIA'], 
-    //   diasemana: dados['DIASEMANA'],
-    //   hora: dados['HORA'],
-    //   mes: dados['MES'], 
-    //   minuto: dados['MINUTO'], 
-    //   temperatura: dados['TEMPERATURA'],
-    //   )
-    //   );
        http.post(Uri.parse("https://hachiko-54054-default-rtdb.firebaseio.com/medicoesAnteriores.json"),
    body: jsonEncode({
       "ano": dados['ANO'], 
