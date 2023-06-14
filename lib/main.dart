@@ -31,9 +31,12 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (_) => ListaDeMedicoes()),
-        ChangeNotifierProvider(
           create: (_) => Auth()),
+        ChangeNotifierProxyProvider<Auth,ListaDeMedicoes>(
+          create: (_) => ListaDeMedicoes('',''),
+          update:(ctx, auth, previous){
+            return ListaDeMedicoes(auth.token??'', auth.userId??'');
+          }),
         ChangeNotifierProvider(
           create: (_) => DadosPet({})),
           

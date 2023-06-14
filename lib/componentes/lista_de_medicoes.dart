@@ -6,6 +6,13 @@ import 'dart:convert';
 
 
 class  ListaDeMedicoes with ChangeNotifier{
+  final String _token;
+  final String _userId;
+
+  ListaDeMedicoes(
+    this._token,
+    this._userId,
+  );
 
   final List<Medicoes> _items =  [];
 
@@ -17,8 +24,8 @@ class  ListaDeMedicoes with ChangeNotifier{
     notifyListeners();
   }
 
-  Future<void> carregaMedicoes() async{
-  final response = await http.get(Uri.parse("https://hachiko-54054-default-rtdb.firebaseio.com/medicoes/.json"));
+  Future<void> carregaMedicoes(String token, String userId) async{
+  final response = await http.get(Uri.parse("https://hachiko-54054-default-rtdb.firebaseio.com/$userId/medicoes/.json?auth=$token"));
   Map<dynamic, dynamic> dados = jsonDecode(response.body);
   print(dados);
     // _items.add(Medicoes(
@@ -32,7 +39,7 @@ class  ListaDeMedicoes with ChangeNotifier{
     //   temperatura: dados['TEMPERATURA'],
     //   )
     //   );
-       http.post(Uri.parse("https://hachiko-54054-default-rtdb.firebaseio.com/medicoesAnteriores.json"),
+       http.post(Uri.parse("https://hachiko-54054-default-rtdb.firebaseio.com/$userId/medicoesAnteriores.json=$token"),
    body: jsonEncode({
       "ano": dados['ANO'], 
       "batimento":  dados['BATIMENTOS'], 
@@ -44,7 +51,7 @@ class  ListaDeMedicoes with ChangeNotifier{
       "temperatura": dados['TEMPERATURA'],
    })
    );
-   final response2 = await http.get(Uri.parse("https://hachiko-54054-default-rtdb.firebaseio.com/medicoesAnteriores/.json"));
+   final response2 = await http.get(Uri.parse("https://hachiko-54054-default-rtdb.firebaseio.com/$userId/medicoesAnteriores/.json=$token"));
  _items.clear();
   Map<dynamic, dynamic> dados2 = jsonDecode(response2.body);
   print(dados2);
