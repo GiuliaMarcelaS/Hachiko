@@ -8,6 +8,8 @@ import 'package:hachiko/componentes/medicoes.dart';
 import 'package:hachiko/componentes/medicoes_grid.dart';
 import 'package:provider/provider.dart';
 
+import '../componentes/auth.dart';
+
 class MedicoesScreen extends StatefulWidget {
   const MedicoesScreen({super.key});
 
@@ -23,16 +25,17 @@ class _MedicoesScreenState extends State<MedicoesScreen> {
   //   Provider.of<ListaDeMedicoes>(context, listen: false).carregaMedicoes();
   // }
 
-  Future<void> refreshMedicoes(BuildContext context){
-    return Provider.of<ListaDeMedicoes>(
-      context,
-      listen: false,
-    ).carregaMedicoes();
-  }
 
   
   @override
   Widget build(BuildContext context) {
+ final auth = Provider.of<Auth>(context, listen: false);
+ Future<void> refreshMedicoes(BuildContext context){
+    return Provider.of<ListaDeMedicoes>(
+      context,
+      listen: false,
+    ).carregaMedicoes(auth.token??'',auth.userId??'');
+  }
     final lista = Provider.of<ListaDeMedicoes>(context);
     return Scaffold(
       appBar: AppBar(

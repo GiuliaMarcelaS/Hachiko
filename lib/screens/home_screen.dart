@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
+  _medicoes(BuildContext context){
+      Navigator.of(context).pushNamed('/medicoes-screen');}
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +16,7 @@ class HomeScreen extends StatelessWidget {
         children: [
           Center(
             child: InkWell(
-              onTap: (){},
+              onTap: ()=> _medicoes(context),
               borderRadius: BorderRadius.circular(50),
               child: Container(
                 child:ClipRRect(borderRadius: BorderRadius.circular(40),child: Text("Frequencia Carciaca")),
@@ -27,7 +29,7 @@ class HomeScreen extends StatelessWidget {
           ),
           Center(
             child: InkWell(
-              onTap: (){},
+              onTap: ()=>_medicoes(context),
               borderRadius: BorderRadius.circular(50),
               child: Container(
                 child:ClipRRect(borderRadius: BorderRadius.circular(40),child: Text("Temperatura")),
