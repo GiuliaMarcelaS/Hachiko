@@ -1,14 +1,15 @@
 import 'dart:js';
 
 import 'package:flutter/material.dart';
-import 'package:hachiko/componentes/item_de_medicoes.dart';
+import 'package:hachiko/componentes/item_de_medicoes_batimentos.dart';
+import 'package:hachiko/componentes/item_de_medicoes_temperatura.dart';
 import 'package:hachiko/componentes/lista_de_medicoes.dart';
 import 'package:hachiko/componentes/medicoes.dart';
 import 'package:provider/provider.dart';
 
 import 'auth.dart';
 
-class MedicoesGrid extends StatelessWidget {
+class MedicoesGridTemperatura extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class MedicoesGrid extends StatelessWidget {
       child: ListView.builder(
         padding: const EdgeInsets.all(10),
         itemCount: medicoesCarregadas.length,
-        itemBuilder: (ctx, i) => ItemDeMedicoes(medicoes: medicoesCarregadas[i]),
+        itemBuilder: (ctx, i) => ItemDeMedicoesTemperatura(medicoes: medicoesCarregadas[i]),
         ),
     );
   }

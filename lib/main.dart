@@ -7,12 +7,13 @@ import 'package:hachiko/componentes/lista_de_medicoes.dart';
 import 'package:hachiko/screens/auth_or_home_screen.dart';
 import 'package:hachiko/screens/auth_screen.dart';
 import 'package:hachiko/screens/home_screen.dart';
+import 'package:hachiko/screens/medicoes_screen_batimentos.dart';
+import 'package:hachiko/screens/medicoes_screen_temperatura.dart';
 import 'package:hachiko/screens/porte_screen.dart';
 import 'package:hachiko/screens/selecionar_especie_screen.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 import 'componentes/medicoes.dart';
-import 'screens/medicoes_screen.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -51,7 +52,8 @@ class MyApp extends StatelessWidget {
         ),
         routes: {
           '/': (ctx) => const AuthOrHomePage(),
-          '/medicoes-screen': (ctx) => const MedicoesScreen(),
+          '/medicoes-screen-batimentos': (ctx) => const MedicoesScreenBatimentos(),
+          '/medicoes-screen-temperatura': (ctx) => const MedicoesScreenTemperatura(),
           '/porte-screen': (ctx) => const PorteScreen(),
           '/home-screen': (ctx) => HomeScreen(),
           '/auth-screen': (ctx) => AuthScreen(),

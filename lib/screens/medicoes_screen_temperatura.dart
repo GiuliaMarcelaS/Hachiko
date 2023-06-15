@@ -2,22 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:hachiko/componentes/dados_pet.dart';
-import 'package:hachiko/componentes/item_de_medicoes.dart';
+import 'package:hachiko/componentes/item_de_medicoes_batimentos.dart';
 import 'package:hachiko/componentes/lista_de_medicoes.dart';
 import 'package:hachiko/componentes/medicoes.dart';
-import 'package:hachiko/componentes/medicoes_grid.dart';
 import 'package:provider/provider.dart';
+import 'package:hachiko/componentes/medicoes_grid_temperatura.dart';
 
 import '../componentes/auth.dart';
 
-class MedicoesScreen extends StatefulWidget {
-  const MedicoesScreen({super.key});
+class MedicoesScreenTemperatura extends StatefulWidget {
+  const MedicoesScreenTemperatura({super.key});
 
   @override
-  State<MedicoesScreen> createState() => _MedicoesScreenState();
+  State<MedicoesScreenTemperatura> createState() => _MedicoesScreenStateTemperatura();
 }
 
-class _MedicoesScreenState extends State<MedicoesScreen> {
+class _MedicoesScreenStateTemperatura extends State<MedicoesScreenTemperatura> {
 
   @override
   // void initState() {
@@ -48,7 +48,7 @@ class _MedicoesScreenState extends State<MedicoesScreen> {
               RefreshIndicator(
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: MedicoesGrid(),
+                  child: MedicoesGridTemperatura(),
                 ),
                 onRefresh: ()=>refreshMedicoes(context),
                 ),

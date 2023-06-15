@@ -5,9 +5,9 @@ import 'package:provider/provider.dart';
 
 import 'dados_pet.dart';
 
-class ItemDeMedicoes extends StatelessWidget {
+class ItemDeMedicoesBatimentos extends StatelessWidget {
   final Medicoes medicoes;
-  const ItemDeMedicoes({
+  const ItemDeMedicoesBatimentos({
     Key? key,
     required this.medicoes,
   }) : super(key: key);
@@ -16,7 +16,6 @@ class ItemDeMedicoes extends StatelessWidget {
   Widget build(BuildContext context) {
     final dados = Provider.of<DadosPet>(context);
     bool teste = true;
-    Text mensagemTemperatura = dados.analiseTemperatura(medicoes.temperatura,medicoes.dia,medicoes.mes,medicoes.ano);
     Text mensagemBatimentos = dados.analiseBatimentos(medicoes.id,medicoes.batimento,medicoes.dia,medicoes.mes,medicoes.ano);
     return Card(
         color: Colors.white,
@@ -47,15 +46,10 @@ class ItemDeMedicoes extends StatelessWidget {
               ],
             ),
             Text(
-              "Temperatura:${medicoes.temperatura.toString()}",
-              textAlign: TextAlign.center,
-            ),
-            Text(
               "Batimentos:${medicoes.batimento.toString()}",
               textAlign: TextAlign.center,
             ),
-            mensagemTemperatura,
-            Text(dados.indicadorRiscoT.toString()),
+
             mensagemBatimentos,
             Text(dados.indicadorRiscoB.toString()),
           ],
