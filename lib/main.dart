@@ -11,6 +11,7 @@ import 'package:hachiko/screens/auth_screen.dart';
 import 'package:hachiko/screens/home_screen.dart';
 import 'package:hachiko/screens/medicoes_screen_batimentos.dart';
 import 'package:hachiko/screens/medicoes_screen_temperatura.dart';
+import 'package:hachiko/screens/nome_pet_screen.dart';
 import 'package:hachiko/screens/porte_screen.dart';
 import 'package:hachiko/screens/selecionar_especie_screen.dart';
 import 'package:hachiko/screens/selecionar_pet_screen.dart';
@@ -69,6 +70,7 @@ class MyApp extends StatelessWidget {
           '/auth-screen': (ctx) => AuthScreen(),
           '/especie-screen': (ctx) => SelecionarEspecieScreen(),
           '/selecionar-pet-screen': (ctx) => SelecionarPetScreen(),
+          '/nome-pet-screen': (ctx) => NomePetScreen(),
           },
       ),
     );

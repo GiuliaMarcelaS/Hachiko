@@ -72,6 +72,7 @@ class DadosPet with ChangeNotifier{
   notifyListeners();
  }
 
+
  analiseTemperatura (double temperatura, String mdia, String mmes, String mano){
    if(dia==''&&mes==''&&ano==''){
         dia = mdia;

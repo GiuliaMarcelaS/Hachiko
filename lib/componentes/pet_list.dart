@@ -32,6 +32,12 @@ class PetList with ChangeNotifier{
   notifyListeners();
 }
 
+Future<void> salvaNome(String token, String userId, String nome) async{
+       http.post(Uri.parse("https://hachiko-54054-default-rtdb.firebaseio.com/$userId/$nome/.json?auth=$token"),
+   );
+  notifyListeners();
+}
+
   void addFase(Pet pet){
     _items.add(pet);
     notifyListeners();

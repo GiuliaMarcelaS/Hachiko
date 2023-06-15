@@ -1,4 +1,3 @@
-import 'dart:js';
 
 import 'package:flutter/material.dart';
 import 'package:hachiko/componentes/item_de_medicoes_batimentos.dart';
