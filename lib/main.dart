@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:hachiko/componentes/auth.dart';
 import 'package:hachiko/componentes/dados_pet.dart';
 import 'package:hachiko/componentes/lista_de_medicoes.dart';
+import 'package:hachiko/componentes/pet.dart';
+import 'package:hachiko/componentes/pet_list.dart';
 import 'package:hachiko/screens/auth_or_home_screen.dart';
 import 'package:hachiko/screens/auth_screen.dart';
 import 'package:hachiko/screens/home_screen.dart';
@@ -11,6 +13,7 @@ import 'package:hachiko/screens/medicoes_screen_batimentos.dart';
 import 'package:hachiko/screens/medicoes_screen_temperatura.dart';
 import 'package:hachiko/screens/porte_screen.dart';
 import 'package:hachiko/screens/selecionar_especie_screen.dart';
+import 'package:hachiko/screens/selecionar_pet_screen.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 import 'componentes/medicoes.dart';
@@ -33,10 +36,17 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (_) => Auth()),
+        ChangeNotifierProvider(
+          create: (_) => Pet()),
         ChangeNotifierProxyProvider<Auth,ListaDeMedicoes>(
           create: (_) => ListaDeMedicoes('',''),
           update:(ctx, auth, previous){
             return ListaDeMedicoes(auth.token??'', auth.userId??'');
+          }),
+        ChangeNotifierProxyProvider<Auth,PetList>(
+          create: (_) => PetList('',''),
+          update:(ctx, auth, previous){
+            return PetList(auth.token??'', auth.userId??'');
           }),
         ChangeNotifierProvider(
           create: (_) => DadosPet({})),
@@ -58,6 +68,7 @@ class MyApp extends StatelessWidget {
           '/home-screen': (ctx) => HomeScreen(),
           '/auth-screen': (ctx) => AuthScreen(),
           '/especie-screen': (ctx) => SelecionarEspecieScreen(),
+          '/selecionar-pet-screen': (ctx) => SelecionarPetScreen(),
           },
       ),
     );

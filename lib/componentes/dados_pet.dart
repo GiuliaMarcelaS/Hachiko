@@ -37,6 +37,10 @@ class DadosPet with ChangeNotifier{
   botaoA = 1;
   notifyListeners();
  }
+  atribuirCachorro (int providerEspecie){
+  especiePet = providerEspecie;
+  notifyListeners();
+ }
   atribuiGato (DadosPet dados){
   especiePet = 2;
   botaoA = 2;
