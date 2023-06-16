@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
+import 'package:http/http.dart' as http;
 
 class DadosPet with ChangeNotifier{
   int tipoPet;
@@ -14,8 +17,14 @@ class DadosPet with ChangeNotifier{
   String mes;
   String ano;
   Set ids;
+  String nome;
+  final String _token;
+  final String _userId;
+
 
   DadosPet(
+    this._token,
+    this._userId,
     this.ids,{
    this.tipoPet = 0,
    this.especiePet = 0,
@@ -29,8 +38,19 @@ class DadosPet with ChangeNotifier{
    this.dia='',
    this.mes='',
    this.ano='',
+   this.nome='',
   }
   );
+
+  Future<void> salvaPet(String token, String userId, String nome, int especie, int porte) async{
+   http.post(Uri.parse("https://hachiko-54054-default-rtdb.firebaseio.com/$userId/$nome/.json"),
+   body: jsonEncode({
+      'especie': especie,
+      'porte': porte,
+   })
+   );
+  notifyListeners();
+}
 
   atribuiCachorro (DadosPet dados){
   especiePet = 1;

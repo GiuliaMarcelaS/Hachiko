@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:hachiko/componentes/auth.dart';
 import 'package:provider/provider.dart';
 
 import 'dados_pet.dart';
@@ -18,6 +19,7 @@ class TamanhoCachorro extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
      final dados = Provider.of<DadosPet>(context);
+     final auth = Provider.of<Auth>(context, listen: false);
     return Center(
       child: Column(
           children: [
@@ -59,7 +61,10 @@ class TamanhoCachorro extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 backgroundColor: Color.fromARGB(255,194, 102, 26)
               ),
-              onPressed:()=>_home(context),
+              onPressed:(){
+                dados.salvaPet(auth.token??'',auth.userId??'',dados.nome,dados.especiePet,dados.tipoPet);
+                _home(context);
+              }
             ),
           ),
           ],

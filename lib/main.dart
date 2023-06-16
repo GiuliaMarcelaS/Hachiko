@@ -49,8 +49,13 @@ class MyApp extends StatelessWidget {
           update:(ctx, auth, previous){
             return PetList(auth.token??'', auth.userId??'');
           }),
-        ChangeNotifierProvider(
-          create: (_) => DadosPet({})),
+        ChangeNotifierProxyProvider<Auth,DadosPet>(
+          create: (_) => DadosPet('','',{}),
+          update:(ctx, auth, previous){
+            return DadosPet(auth.token??'', auth.userId??'',{});
+          }),
+        // ChangeNotifierProvider(
+        //   create: (_) => DadosPet({})),
           
       ],
       child: MaterialApp(
