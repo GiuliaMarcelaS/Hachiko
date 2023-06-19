@@ -43,8 +43,9 @@ class DadosPet with ChangeNotifier{
   );
 
   Future<void> salvaPet(String token, String userId, String nome, int especie, int porte) async{
-   http.post(Uri.parse("https://hachiko-54054-default-rtdb.firebaseio.com/$userId/$nome/.json"),
+   http.post(Uri.parse("https://hachiko-54054-default-rtdb.firebaseio.com/$userId/pets/.json"),
    body: jsonEncode({
+      'nome': nome,
       'especie': especie,
       'porte': porte,
    })
