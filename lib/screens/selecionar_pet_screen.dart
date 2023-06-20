@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:hachiko/componentes/pet.dart';
 import 'package:hachiko/componentes/pet_grid.dart';
 import 'package:hachiko/componentes/pet_list.dart';
@@ -17,14 +15,14 @@ class SelecionarPetScreen extends StatefulWidget {
 
 class _SelecionarPetScreenState extends State<SelecionarPetScreen> {
 
-
-  @override
-  Widget build(BuildContext context) {
-    final auth = Provider.of<Auth>(context, listen: false);
-     final pet = Provider.of<Pet>(context, listen: false);
-     _cadastro(BuildContext context){
+ _cadastro(BuildContext context){
       Navigator.of(context).pushNamed('/nome-pet-screen');
 }
+  @override
+  Widget build(BuildContext context) {
+     final auth = Provider.of<Auth>(context, listen: false);
+     final pet = Provider.of<Pet>(context, listen: false);
+
     Future<void> refreshPets(BuildContext context){
     return Provider.of<PetList>(
       context,
@@ -32,13 +30,13 @@ class _SelecionarPetScreenState extends State<SelecionarPetScreen> {
     ).carregaPets(auth.token??'',auth.userId??'',pet.nome);
   }
     return Scaffold(
-      appBar: AppBar(title: Text("Selecione o pet"),),
+      appBar: AppBar(title: const Text("Selecione o pet"),),
       body: Column(
         children: [
           //Text("Adicione novo pet", style: TextStyle(color: Colors.yellow),),
-          IconButton(onPressed:()=>_cadastro(context), icon: Icon(Icons.add_circle),iconSize: 80,color: Colors.yellow,),
-          PetGrid(),
-          TextButton(onPressed:()=> refreshPets(context), child: Text("atualizar")),
+          IconButton(onPressed:()=>_cadastro(context), icon: const Icon(Icons.add_circle),iconSize: 80,color: Colors.yellow,),
+          const PetGrid(),
+          TextButton(onPressed:()=> refreshPets(context), child: const Text("atualizar")),
         ],
       ),
     );

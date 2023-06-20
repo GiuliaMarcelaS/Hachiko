@@ -5,7 +5,9 @@ import 'package:hachiko/componentes/pet.dart';
 import 'package:http/http.dart' as http;
 
 class PetList with ChangeNotifier{
+  // ignore: unused_field
   final String _token;
+  // ignore: unused_field
   final String _userId;
   String key;
 
@@ -22,7 +24,6 @@ class PetList with ChangeNotifier{
   Future<void> carregaPets(String token, String userId, String pet) async{
   final response = await http.get(Uri.parse("https://hachiko-54054-default-rtdb.firebaseio.com/$userId/pets/.json"));
   Map<dynamic, dynamic> dados = jsonDecode(response.body);
-  print(dados);
  _items.clear();
   dados.forEach((id, dados) { 
   _items.add(Pet(

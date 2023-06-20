@@ -15,7 +15,6 @@ class ItemDeMedicoesBatimentos extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dados = Provider.of<DadosPet>(context);
-    bool teste = true;
     Text mensagemBatimentos = dados.analiseBatimentos(medicoes.id,medicoes.batimento,medicoes.dia,medicoes.mes,medicoes.ano);
     return Card(
         color: Colors.white,

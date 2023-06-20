@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:hachiko/componentes/auth.dart';
 import 'package:hachiko/componentes/dados_pet.dart';
-import 'package:hachiko/componentes/pet_list.dart';
 import 'package:provider/provider.dart';
 
 class NomePetScreen extends StatefulWidget {
@@ -20,12 +16,11 @@ class _NomePetScreenState extends State<NomePetScreen> {
   @override
   Widget build(BuildContext context) {
     final dados = Provider.of<DadosPet>(context);
-    final auth = Provider.of<Auth>(context);
     return Scaffold(
-      appBar: AppBar(title: Text('Primeiro, qual o nome do seu pet?')),
+      appBar: AppBar(title: const Text('Primeiro, qual o nome do seu pet?')),
       body: Form(
           child: TextField(
-            decoration: const InputDecoration(labelText: 'insira uma letra'),
+            decoration: const InputDecoration(labelText: 'insira o nome do seu pet'),
             onSubmitted: (nomeDigitado) {
               dados.nome = nomeDigitado;
               _especie(context);

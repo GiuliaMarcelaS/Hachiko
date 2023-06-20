@@ -1,11 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:hachiko/componentes/dados_pet.dart';
-import 'package:hachiko/componentes/item_de_medicoes_batimentos.dart';
 import 'package:hachiko/componentes/lista_de_medicoes.dart';
-import 'package:hachiko/componentes/medicoes.dart';
-import 'package:hachiko/componentes/pet.dart';
 import 'package:hachiko/componentes/pet_list.dart';
 import 'package:provider/provider.dart';
 
@@ -32,7 +26,6 @@ class _MedicoesScreenBatimentosState extends State<MedicoesScreenBatimentos> {
   @override
   Widget build(BuildContext context) {
  final auth = Provider.of<Auth>(context, listen: false);
- final pet = Provider.of<Pet>(context,listen: false);
  final petList = Provider.of<PetList>(context,listen: false);
  Future<void> refreshMedicoes(BuildContext context){
     return Provider.of<ListaDeMedicoes>(
@@ -40,24 +33,22 @@ class _MedicoesScreenBatimentosState extends State<MedicoesScreenBatimentos> {
       listen: false,
     ).carregaMedicoes(auth.token??'',auth.userId??'',petList.key);
   }
-    final lista = Provider.of<ListaDeMedicoes>(context);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('medições'),
+        title: const Text('medições'),
       ),
       body: 
           Column(
             children: [
               RefreshIndicator(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                child: const Padding(
+                  padding: EdgeInsets.all(8.0),
                   child: MedicoesGridBatimentos(),
                 ),
                 onRefresh: ()=>refreshMedicoes(context),
                 ),
-              TextButton(onPressed:()=> refreshMedicoes(context), child: Text("atualizar")),
-             // TextButton(onPressed:()=> lista.salvaMedicoes, child: Text("atualizar")),
+              TextButton(onPressed:()=> refreshMedicoes(context), child: const Text("atualizar")),
             ],
           ),
       );

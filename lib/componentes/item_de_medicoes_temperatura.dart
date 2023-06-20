@@ -15,7 +15,6 @@ class ItemDeMedicoesTemperatura extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dados = Provider.of<DadosPet>(context);
-    bool teste = true;
     Text mensagemTemperatura = dados.analiseTemperatura(medicoes.temperatura,medicoes.dia,medicoes.mes,medicoes.ano);
     return Card(
         color: Colors.white,

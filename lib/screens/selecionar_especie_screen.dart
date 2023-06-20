@@ -26,7 +26,7 @@ class _SelecionarEspecieScreenState extends State<SelecionarEspecieScreen> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text("O seu pet corresponde a qual animal?"),
+        title: const Text("O seu pet corresponde a qual animal?"),
       ),
       body: Column(
         children: [
@@ -35,11 +35,11 @@ class _SelecionarEspecieScreenState extends State<SelecionarEspecieScreen> {
               onTap: ()=>dados.atribuiCachorro(dados),
               borderRadius: BorderRadius.circular(50),
               child: Container(
-                child:ClipRRect(borderRadius: BorderRadius.circular(40),child: Image.asset('assets/images/cachorro.png',fit: BoxFit.fill,)),
-                color: dados.botaoA==1?Colors.yellow:Color.fromRGBO(33,57,98,1),
+                color: dados.botaoA==1?Colors.yellow:const Color.fromRGBO(33,57,98,1),
                 width: 170,
                 height: 190,
-                margin: EdgeInsets.only(bottom: 50, top: 20),
+                margin: const EdgeInsets.only(bottom: 50, top: 20),
+                child:ClipRRect(borderRadius: BorderRadius.circular(40),child: Image.asset('assets/images/cachorro.png',fit: BoxFit.fill,)),
               ),
             ),
           ),
@@ -48,22 +48,22 @@ class _SelecionarEspecieScreenState extends State<SelecionarEspecieScreen> {
               onTap: ()=>dados.atribuiGato(dados),
               borderRadius: BorderRadius.circular(50),
               child: Container(
-                child: ClipRRect(borderRadius: BorderRadius.circular(40),child: Image.asset('assets/images/gato.png')),
-                color:dados.botaoA==2?Colors.yellow: Color.fromRGBO(33,57,98,1),
+                color:dados.botaoA==2?Colors.yellow: const Color.fromRGBO(33,57,98,1),
                 width: 176,
                 height: 200,
+                child: ClipRRect(borderRadius: BorderRadius.circular(40),child: Image.asset('assets/images/gato.png')),
               ),
             ),
           ),
           Container(
             alignment: Alignment.bottomRight,
-            margin: EdgeInsets.only(right: 20,top: 40),
+            margin: const EdgeInsets.only(right: 20,top: 40),
             child: ElevatedButton(
-              child: Text('Próximo'),
               style: ElevatedButton.styleFrom(
-                backgroundColor: Color.fromARGB(255,194, 102, 26)
+                backgroundColor: const Color.fromARGB(255,194, 102, 26)
               ),
               onPressed:()=>_porte(context),
+              child: const Text('Próximo'),
             ),
           ),
         ],

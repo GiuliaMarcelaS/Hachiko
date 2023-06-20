@@ -15,7 +15,7 @@ class PetItem extends StatelessWidget {
       footer: GridTileBar(
         title: Text(
           pet.nome,
-          style: TextStyle(color: Colors.black),),
+          style: const TextStyle(color: Colors.black),),
       ),
       child: GestureDetector(
         onTap: (  
@@ -46,7 +46,7 @@ class PetItem extends StatelessWidget {
              Navigator.of(context).pushNamed('/home-screen', arguments: pet);
             }
         ),
-        child: Card(),
+        child: const Card(),
         )
       );
   }

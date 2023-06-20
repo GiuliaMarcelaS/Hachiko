@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:hachiko/componentes/medicoes.dart';
-import 'package:hachiko/dadosTeste/dummy_data.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 
 class  ListaDeMedicoes with ChangeNotifier{
+  // ignore: unused_field
   final String _token;
+  // ignore: unused_field
   final String _userId;
 
   ListaDeMedicoes(
@@ -27,7 +28,6 @@ class  ListaDeMedicoes with ChangeNotifier{
   Future<void> carregaMedicoes(String token, String userId, String petId) async{
   final response = await http.get(Uri.parse("https://hachiko-54054-default-rtdb.firebaseio.com/medicoes/.json"));
   Map<dynamic, dynamic> dados = jsonDecode(response.body);
-  print(dados);
        http.post(Uri.parse("https://hachiko-54054-default-rtdb.firebaseio.com/$userId/medicoesAnteriores/.json?auth=$token"),
    body: jsonEncode({
       "ano": dados['ANO'], 
@@ -39,11 +39,10 @@ class  ListaDeMedicoes with ChangeNotifier{
       "minuto": dados['MINUTO'], 
       "temperatura": dados['TEMPERATURA'],
    })
-   ); print(petId);
+   );
    final response2 = await http.get(Uri.parse("https://hachiko-54054-default-rtdb.firebaseio.com/$userId/medicoesAnteriores/.json?"));
  _items.clear();
   Map<dynamic, dynamic> dados2 = jsonDecode(response2.body);
-  print(dados2);
   dados2.forEach((id, dados2) { 
   _items.add(Medicoes(
       id:id,
@@ -74,7 +73,6 @@ class  ListaDeMedicoes with ChangeNotifier{
    })
    );
    _items.add(medicoes);
-   print(medicoes);
   notifyListeners();
 }
 

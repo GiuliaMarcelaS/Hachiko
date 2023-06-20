@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:hachiko/componentes/tamanhos_cachorro.dart';
 import 'package:hachiko/componentes/tamanhos_gato.dart';
 import 'package:provider/provider.dart';
@@ -15,10 +13,10 @@ class PorteScreen extends StatelessWidget {
      final dados = Provider.of<DadosPet>(context);
      retornarEspecie() {
       if(dados.especiePet == 1){
-        return TamanhoCachorro();
+        return const TamanhoCachorro();
       }
       else if(dados.especiePet == 2){
-        return TamanhoGato();
+        return const TamanhoGato();
       }
      }
 
@@ -27,7 +25,7 @@ class PorteScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('Selecione o tamanho do pet'),
+        title: const Text('Selecione o tamanho do pet'),
       ),
       body:especie,
     );
