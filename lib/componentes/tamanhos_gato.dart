@@ -6,8 +6,8 @@ import 'dados_pet.dart';
 
 class TamanhoGato extends StatelessWidget {
   const TamanhoGato({super.key});
-  _home(BuildContext context){
-      Navigator.of(context).pushNamed('/home-screen');
+  _pets(BuildContext context){
+      Navigator.of(context).pushNamed('/selecionar-pet-screen');
 }
 
   @override
@@ -46,7 +46,7 @@ class TamanhoGato extends StatelessWidget {
               ),
               onPressed:(){
                 dados.salvaPet(auth.token??'', auth.userId??'', dados.nome, dados.especiePet, dados.tipoPet);
-                _home(context);
+                _pets(context);
               },
               child: const Text('Próximo'),
             ),

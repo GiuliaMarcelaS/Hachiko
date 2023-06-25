@@ -20,10 +20,10 @@ class PetGrid extends StatelessWidget {
           create: (_) => loadedPets[i], 
           child: const PetItem()),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          childAspectRatio: 3/2,
-          crossAxisSpacing: 10,
-          mainAxisSpacing: 10,
+          crossAxisCount: 2 ,
+          childAspectRatio: 1,
+          crossAxisSpacing: 1,
+          mainAxisSpacing: 0,
         ), 
         ),
     );

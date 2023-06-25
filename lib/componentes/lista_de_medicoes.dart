@@ -28,6 +28,7 @@ class  ListaDeMedicoes with ChangeNotifier{
   Future<void> carregaMedicoes(String token, String userId, String petId) async{
   final response = await http.get(Uri.parse("https://hachiko-54054-default-rtdb.firebaseio.com/medicoes/.json"));
   Map<dynamic, dynamic> dados = jsonDecode(response.body);
+
        http.post(Uri.parse("https://hachiko-54054-default-rtdb.firebaseio.com/$userId/medicoesAnteriores/.json?auth=$token"),
    body: jsonEncode({
       "ano": dados['ANO'], 
@@ -41,11 +42,11 @@ class  ListaDeMedicoes with ChangeNotifier{
    })
    );
    final response2 = await http.get(Uri.parse("https://hachiko-54054-default-rtdb.firebaseio.com/$userId/medicoesAnteriores/.json?"));
- _items.clear();
+   _items.clear();
   Map<dynamic, dynamic> dados2 = jsonDecode(response2.body);
   dados2.forEach((id, dados2) { 
   _items.add(Medicoes(
-      id:id,
+     id:id,
       ano: dados2['ano'], 
       batimento: dados2['batimento'], 
       dia: dados2['dia'], 

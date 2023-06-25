@@ -16,10 +16,12 @@ class MedicoesScreenBatimentos extends StatefulWidget {
 class _MedicoesScreenBatimentosState extends State<MedicoesScreenBatimentos> {
 
   @override
-  // void initState() {
-  //   super.initState();
-  //   Provider.of<ListaDeMedicoes>(context, listen: false).carregaMedicoes();
-  // }
+  void initState() {
+    super.initState();
+    final auth = Provider.of<Auth>(context, listen: false);
+    final petList = Provider.of<PetList>(context,listen: false);
+    Provider.of<ListaDeMedicoes>(context, listen: false).carregaMedicoes(auth.token??'',auth.userId??'',petList.key);
+  }
 
 
   
@@ -43,7 +45,7 @@ class _MedicoesScreenBatimentosState extends State<MedicoesScreenBatimentos> {
             children: [
               RefreshIndicator(
                 child: const Padding(
-                  padding: EdgeInsets.all(8.0),
+                  padding: EdgeInsets.all(8),
                   child: MedicoesGridBatimentos(),
                 ),
                 onRefresh: ()=>refreshMedicoes(context),

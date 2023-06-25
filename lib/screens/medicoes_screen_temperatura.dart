@@ -16,17 +16,18 @@ class MedicoesScreenTemperatura extends StatefulWidget {
 class _MedicoesScreenStateTemperatura extends State<MedicoesScreenTemperatura> {
 
   @override
-  // void initState() {
-  //   super.initState();
-  //   Provider.of<ListaDeMedicoes>(context, listen: false).carregaMedicoes();
-  // }
-
+  void initState() {
+    super.initState();
+    final auth = Provider.of<Auth>(context, listen: false);
+    final petList = Provider.of<PetList>(context,listen: false);
+    Provider.of<ListaDeMedicoes>(context, listen: false).carregaMedicoes(auth.token??'',auth.userId??'',petList.key);
+  }
 
   
   @override
   Widget build(BuildContext context) {
  final auth = Provider.of<Auth>(context, listen: false);
- final petList = Provider.of<PetList>(context);
+ final petList = Provider.of<PetList>(context, listen: false);
  Future<void> refreshMedicoes(BuildContext context){
     return Provider.of<ListaDeMedicoes>(
       context,
@@ -43,7 +44,7 @@ class _MedicoesScreenStateTemperatura extends State<MedicoesScreenTemperatura> {
             children: [
               RefreshIndicator(
                 child: const Padding(
-                  padding: EdgeInsets.all(8.0),
+                  padding: EdgeInsets.all(8),
                   child: MedicoesGridTemperatura(),
                 ),
                 onRefresh: ()=>refreshMedicoes(context),

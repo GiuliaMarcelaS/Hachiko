@@ -77,68 +77,78 @@ class _AuthFormState extends State<AuthForm> {
   @override
   Widget build(BuildContext context) {
     return Card(
+      margin: EdgeInsets.all(30),
+      color: Colors.amber,
       child: Form(
         key: _formKey,
-        child:Column(children: [
-          TextFormField(
-            decoration: const InputDecoration(labelText: 'E-mail'),
-            keyboardType: TextInputType.emailAddress,
-            onSaved: (email) => _authData['email'] = email ??'',
-            // ignore: no_leading_underscores_for_local_identifiers
-            validator: (_email) {
-              final email = _email ?? '';
-              if (email.trim().isEmpty|| !email.contains('@')){
-                return 'Informe um e-mail válido';
+        child:Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            children: [
+            TextFormField(
+              decoration: const InputDecoration(labelText: 'E-mail',fillColor: Colors.white, filled: true),
+              keyboardType: TextInputType.emailAddress,
+              onSaved: (email) => _authData['email'] = email ??'',
+              // ignore: no_leading_underscores_for_local_identifiers
+              validator: (_email) {
+                final email = _email ?? '';
+                if (email.trim().isEmpty|| !email.contains('@')){
+                  return 'Informe um e-mail válido';
+                  }
+                  return null;
+                },
+            ),
+            TextFormField(
+              decoration: const InputDecoration(labelText: 'Senha',fillColor: Colors.white, filled: true),
+              keyboardType: TextInputType.emailAddress,
+              obscureText: true,
+              controller: _passwordController,
+              onSaved: (password) => _authData['password'] = password ??'',
+              // ignore: no_leading_underscores_for_local_identifiers, body_might_complete_normally_nullable
+              validator: (_password) {
+                final password = _password ?? '';
+                if (password.isEmpty||password.length < 5){
+                  return 'Informe uma senha válida';
+                }
+              },
+            ),
+            if(_isSignup())
+             TextFormField(
+              decoration: const InputDecoration(labelText: 'Confirmar Senha',fillColor: Colors.white, filled: true),
+              keyboardType: TextInputType.emailAddress,
+              obscureText: true,
+             // onSaved: (password) => _authData['password'] = password ??'',
+              validator: _isLogin() ? null
+              // ignore: no_leading_underscores_for_local_identifiers
+              :(_password) {
+                final password = _password ?? '';
+                if(password != _passwordController.text){
+                  return 'Senhas informadas não conferem.';
                 }
                 return null;
               },
-          ),
-          TextFormField(
-            decoration: const InputDecoration(labelText: 'Senha'),
-            keyboardType: TextInputType.emailAddress,
-            obscureText: true,
-            controller: _passwordController,
-            onSaved: (password) => _authData['password'] = password ??'',
-            // ignore: no_leading_underscores_for_local_identifiers, body_might_complete_normally_nullable
-            validator: (_password) {
-              final password = _password ?? '';
-              if (password.isEmpty||password.length < 5){
-                return 'Informe uma senha válida';
-              }
-            },
-          ),
-          if(_isSignup())
-           TextFormField(
-            decoration: const InputDecoration(labelText: 'Confirmar Senha'),
-            keyboardType: TextInputType.emailAddress,
-            obscureText: true,
-           // onSaved: (password) => _authData['password'] = password ??'',
-            validator: _isLogin() ? null
-            // ignore: no_leading_underscores_for_local_identifiers
-            :(_password) {
-              final password = _password ?? '';
-              if(password != _passwordController.text){
-                return 'Senhas informadas não conferem.';
-              }
-              return null;
-            },
-          ),
-          const SizedBox(height: 20,),
-          if(_isLoading)
-          const CircularProgressIndicator()
-          else
-          ElevatedButton(
-            onPressed: _submit, 
-            child: Text(
-              _authMode == AuthMode.login? 'ENTRAR': 'REGISTRAR',
-            )),
-            //Spacer(),
-            TextButton(
-              onPressed: _switchAuthMode, 
+            ),
+            const SizedBox(height: 20,),
+            if(_isLoading)
+            const CircularProgressIndicator(color: Colors.deepOrange,)
+            else
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color.fromARGB(255,194, 102, 26)
+              ),
+              onPressed: _submit, 
               child: Text(
-                _isLogin() ? 'REGISTRAR': 'JÁ POSSUI CONTA?'
-              ))
-        ],) ),
+                _authMode == AuthMode.login? 'ENTRAR': 'REGISTRAR',
+              )),
+              //Spacer(),
+              TextButton(
+                onPressed: _switchAuthMode, 
+                child: Text(
+                  _isLogin() ? 'REGISTRAR': 'JÁ POSSUI CONTA?',
+                  style: TextStyle(color: Colors.black),
+                ))
+          ],),
+        ) ),
     );
   }
 }
