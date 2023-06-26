@@ -15,35 +15,29 @@ class HomeScreen extends StatelessWidget {
         centerTitle: true,
         title: const Text("Home"),
       ),
-      body: Column(
-        children: [
-          Center(
-            child: InkWell(
-              onTap: ()=> _medicoesBatimentos(context),
-              borderRadius: BorderRadius.circular(50),
-              child: Container(
-                color: Colors.yellow,
-                width: 170,
-                height: 190,
-                margin: const EdgeInsets.only(bottom: 50, top: 20),
-                child:ClipRRect(borderRadius: BorderRadius.circular(40),child: const Text("Frequencia Carciaca")),
-              ),
+      body: Center(
+        child: Column(
+          children: [
+            Container(
+              child: IconButton(
+                icon: Icon(Icons.monitor_heart, color: Colors.amber,size: 150,),
+                onPressed: ()=> _medicoesBatimentos(context),),
+                width: 300,
+                height: 200,
+                margin: EdgeInsets.only(top:50,right: 50,left: 50),
             ),
-          ),
-          Center(
-            child: InkWell(
-              onTap: ()=>_medicoesTemperatura(context),
-              borderRadius: BorderRadius.circular(50),
-              child: Container(
-                color: Colors.yellow,
-                width: 170,
-                height: 190,
-                margin: const EdgeInsets.only(bottom: 50, top: 20),
-                child:ClipRRect(borderRadius: BorderRadius.circular(40),child: const Text("Temperatura")),
-              ),
+            Text("Frequência Cardíaca",style: TextStyle(color: Colors.amber,fontSize: 20),),
+            Container(
+              child: IconButton(
+                icon: Icon(Icons.thermostat_outlined,color: Colors.amber,size: 150,),
+                onPressed: ()=> _medicoesTemperatura(context),),
+               width: 300,
+               height: 200,
+               margin: EdgeInsets.only(top:90,right: 50,left: 50),
             ),
-          ),
-        ],
+            Text("Temperatura",style: TextStyle(color: Colors.amber,fontSize: 20),),
+          ],
+        ),
       )
     );
   }

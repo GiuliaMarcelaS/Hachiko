@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:hachiko/componentes/auth.dart';
+import 'package:hachiko/componentes/calendario.dart';
 import 'package:hachiko/componentes/dados_pet.dart';
 import 'package:hachiko/componentes/lista_de_medicoes.dart';
 import 'package:hachiko/componentes/pet.dart';
 import 'package:hachiko/componentes/pet_list.dart';
 import 'package:hachiko/screens/auth_or_home_screen.dart';
 import 'package:hachiko/screens/auth_screen.dart';
+import 'package:hachiko/screens/data_screen.dart';
 import 'package:hachiko/screens/home_screen.dart';
 import 'package:hachiko/screens/medicoes_screen_batimentos.dart';
 import 'package:hachiko/screens/medicoes_screen_temperatura.dart';
@@ -30,6 +32,8 @@ class MyApp extends StatelessWidget {
           create: (_) => Auth()),
         ChangeNotifierProvider(
           create: (_) => Pet()),
+        ChangeNotifierProvider(
+          create: (_) => Calendario()),
         ChangeNotifierProxyProvider<Auth,ListaDeMedicoes>(
           create: (_) => ListaDeMedicoes('',''),
           update:(ctx, auth, previous){
@@ -60,6 +64,7 @@ class MyApp extends StatelessWidget {
           '/medicoes-screen-temperatura': (ctx) => const MedicoesScreenTemperatura(),
           '/porte-screen': (ctx) => const PorteScreen(),
           '/home-screen': (ctx) => const HomeScreen(),
+          '/data-screen': (ctx) => const DataScreen(),
           '/auth-screen': (ctx) => const AuthScreen(),
           '/especie-screen': (ctx) => const SelecionarEspecieScreen(),
           '/selecionar-pet-screen': (ctx) => const SelecionarPetScreen(),

@@ -45,12 +45,12 @@ class ItemDeMedicoesTemperatura extends StatelessWidget {
               ],
             ),
             Text(
-              "Temperatura:${medicoes.temperatura.toString()}",
+              "Temperatura:${medicoes.temperatura.toString()}°C",
               textAlign: TextAlign.center,
             ),
             
             mensagemTemperatura,
-            Text(dados.indicadorRiscoT.toString()),
+           // Text(dados.indicadorRiscoT.toString()),
           ],
         ),
       );

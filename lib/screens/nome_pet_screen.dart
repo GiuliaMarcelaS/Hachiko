@@ -20,7 +20,7 @@ class _NomePetScreenState extends State<NomePetScreen> {
       appBar: AppBar(title: const Text('Primeiro, qual o nome do seu pet?')),
       body: Form(
           child: TextField(
-            decoration: const InputDecoration(labelText: 'insira o nome do seu pet'),
+            decoration: const InputDecoration(labelText: 'insira o nome do seu pet',),
             onSubmitted: (nomeDigitado) {
               dados.nome = nomeDigitado;
               _especie(context);

@@ -1,64 +1,58 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/container.dart';
+import 'package:flutter/src/widgets/framework.dart';
 import 'package:hachiko/componentes/calendario.dart';
-import 'package:hachiko/componentes/lista_de_medicoes.dart';
-import 'package:hachiko/componentes/pet_list.dart';
 import 'package:provider/provider.dart';
 
 import '../componentes/auth.dart';
+import '../componentes/lista_de_medicoes.dart';
 import '../componentes/medicoes_grid_batimentos.dart';
+import '../componentes/pet_list.dart';
 
-class MedicoesScreenBatimentos extends StatefulWidget {
-  const MedicoesScreenBatimentos({super.key});
+class DataScreen extends StatefulWidget {
+  const DataScreen({super.key});
 
   @override
-  State<MedicoesScreenBatimentos> createState() => _MedicoesScreenBatimentosState();
+  State<DataScreen> createState() => _DataScreenState();
 }
 
-class _MedicoesScreenBatimentosState extends State<MedicoesScreenBatimentos> {
-  DateTime _selectedDate = DateTime.now();
-
+class _DataScreenState extends State<DataScreen> {
   @override
-  void initState() {
+   void initState() {
     super.initState();
+     final calendario = Provider.of<Calendario>(context,listen: false);
     final auth = Provider.of<Auth>(context, listen: false);
-    final petList = Provider.of<PetList>(context,listen: false);
-    Provider.of<ListaDeMedicoes>(context, listen: false).carregaMedicoes(auth.token??'',auth.userId??'',petList.key);
+    Provider.of<ListaDeMedicoes>(context, listen: false).carregaMedicoesDatadas(auth.token??'',auth.userId??'',calendario.dia,calendario.mes,calendario.ano);
   }
-  _data(BuildContext context){
-      Navigator.of(context).pushNamed('/data-screen');}
-
   @override
   Widget build(BuildContext context) {
- final auth = Provider.of<Auth>(context, listen: false);
- final calendario = Provider.of<Calendario>(context);
- final petList = Provider.of<PetList>(context,listen: false);
- Future<void> refreshMedicoes(BuildContext context){
+     final auth = Provider.of<Auth>(context, listen: false);
+    final calendario = Provider.of<Calendario>(context);
+     Future<void> refreshMedicoes(BuildContext context){
     return Provider.of<ListaDeMedicoes>(
       context,
       listen: false,
-    ).carregaMedicoes(auth.token??'',auth.userId??'',petList.key);
+    ).carregaMedicoesDatadas(auth.token??'',auth.userId??'',calendario.dia,calendario.mes,calendario.ano);
   }
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
-        title: const Text('medições'),
+        title: Text("${calendario.dia}/${calendario.mes}/${calendario.ano}"),
         actions: <Widget>[
-          IconButton(onPressed:(){
+           IconButton(onPressed:(){
             calendario.mostrarCalendario(context);
             }, icon: Icon(Icons.calendar_month))
         ],
       ),
-      body: 
-          Column(
+      body: Column(
             children: [
-             Container(
+              Container(
                 color: Color.fromARGB(200, 255, 255, 255),
                 child: Text("OBS : pequenas alterações cardíacas isoladas podem indicar susto, atividade física intensa, entre outros. Entretanto, caso as alterações sejam frequêntes (acima de 3 no dia), é indicado marcar exame para o animal.",
                 style: TextStyle(color: Colors.black, fontSize: 15)),
               ),
               RefreshIndicator(
                 child: const Padding(
-                  padding: EdgeInsets.all(0),
+                  padding: EdgeInsets.all(8),
                   child: MedicoesGridBatimentos(),
                 ),
                 onRefresh: ()=>refreshMedicoes(context),
@@ -66,6 +60,6 @@ class _MedicoesScreenBatimentosState extends State<MedicoesScreenBatimentos> {
               TextButton(onPressed:()=> refreshMedicoes(context), child: const Text("medir em tempo real")),
             ],
           ),
-      );
+    );
   }
 }

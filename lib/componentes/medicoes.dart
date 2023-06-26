@@ -7,10 +7,12 @@ class Medicoes with ChangeNotifier{
   final String hora;
   final String minuto;
   final int batimento;
-  final int temperatura;
+  final double temperatura;
   final String diasemana;
+  bool igual;
 
-  Medicoes({
+  Medicoes(
+    {
     required this.id,
     required this.dia,
     required this.mes,
@@ -20,6 +22,17 @@ class Medicoes with ChangeNotifier{
     required this.batimento,
     required this.temperatura,
     required this.diasemana,
-  });
-  
+    this.igual = false,
+  }
+  );
+
+  toggleIgual(String dataSelecionada){
+    String dataMedicao = "24/6/2023";
+    igual = false;
+    if(dataSelecionada == dataMedicao){
+      igual = true;
+    }
+    print(igual);
+    notifyListeners();
+  }
 }

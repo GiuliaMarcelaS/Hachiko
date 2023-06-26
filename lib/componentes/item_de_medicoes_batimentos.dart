@@ -45,12 +45,12 @@ class ItemDeMedicoesBatimentos extends StatelessWidget {
               ],
             ),
             Text(
-              "Batimentos:${medicoes.batimento.toString()}",
+              "Batimentos:${medicoes.batimento.toString()}bpm",
               textAlign: TextAlign.center,
             ),
 
             mensagemBatimentos,
-            Text(dados.indicadorRiscoB.toString()),
+           // Text(dados.indicadorRiscoB.toString()),
           ],
         ),
       );
