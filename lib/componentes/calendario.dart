@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class Calendario with ChangeNotifier{
-   data(BuildContext context){
-      Navigator.of(context).pushNamed('/data-screen');}
+   dataBatimento(BuildContext context){
+      Navigator.of(context).pushNamed('/data-batimento-screen');}
+
+   dataTemperatura(BuildContext context){
+      Navigator.of(context).pushNamed('/data-temperatura-screen');}
 
 
   DateTime selectedDate = DateTime.now();
@@ -13,7 +16,7 @@ class Calendario with ChangeNotifier{
   String ano = "";
   String mesA = "";
   String mes = "";
-  mostrarCalendario(BuildContext context){
+  mostrarCalendario(BuildContext context, int id){
     showDatePicker(context:context,
      initialDate: DateTime.now(),
       firstDate: DateTime(2023),
@@ -63,7 +66,12 @@ class Calendario with ChangeNotifier{
         else if(mesA =="12"){
           mes = 'December';
         }
-        data(context);
+        if(id==1){
+          dataBatimento(context);
+        }
+        else{
+          dataTemperatura(context);
+        }
       });
   }
 }

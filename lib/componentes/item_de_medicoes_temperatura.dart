@@ -45,7 +45,7 @@ class ItemDeMedicoesTemperatura extends StatelessWidget {
               ],
             ),
             Text(
-              "Temperatura:${medicoes.temperatura.toString()}°C",
+              "Temperatura:${medicoes.temperatura.toStringAsFixed(2)}°C",
               textAlign: TextAlign.center,
             ),
             

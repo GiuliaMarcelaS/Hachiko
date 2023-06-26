@@ -15,7 +15,7 @@ class MedicoesGridTemperatura extends StatelessWidget {
     final provider = Provider.of<ListaDeMedicoes>(context);
     final List<Medicoes> medicoesCarregadas = provider.items;
     return SizedBox(
-      height: 600,
+      height: 720,
       child: ListView.builder(
         padding: const EdgeInsets.all(10),
         itemCount: medicoesCarregadas.length,

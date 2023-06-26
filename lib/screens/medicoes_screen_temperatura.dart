@@ -30,6 +30,7 @@ class _MedicoesScreenTemperaturaState extends State<MedicoesScreenTemperatura> {
 
   @override
   Widget build(BuildContext context) {
+    int id = 2;
  final auth = Provider.of<Auth>(context, listen: false);
  final calendario = Provider.of<Calendario>(context);
  final petList = Provider.of<PetList>(context,listen: false);
@@ -45,7 +46,7 @@ class _MedicoesScreenTemperaturaState extends State<MedicoesScreenTemperatura> {
         title: const Text('medições'),
         actions: <Widget>[
           IconButton(onPressed:(){
-            calendario.mostrarCalendario(context);
+            calendario.mostrarCalendario(context,id);
             }, icon: Icon(Icons.calendar_month))
         ],
       ),
@@ -59,7 +60,7 @@ class _MedicoesScreenTemperaturaState extends State<MedicoesScreenTemperatura> {
                 ),
                 onRefresh: ()=>refreshMedicoes(context),
                 ),
-              TextButton(onPressed:()=> refreshMedicoes(context), child: const Text("medir em tempo real")),
+             // TextButton(onPressed:()=> refreshMedicoes(context), child: const Text("medir em tempo real")),
             ],
           ),
       );

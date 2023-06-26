@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:hachiko/componentes/calendario.dart';
+import 'package:hachiko/componentes/medicoes_grid_temperatura.dart';
 import 'package:provider/provider.dart';
 
 import '../componentes/auth.dart';
@@ -9,14 +10,14 @@ import '../componentes/lista_de_medicoes.dart';
 import '../componentes/medicoes_grid_batimentos.dart';
 import '../componentes/pet_list.dart';
 
-class DataScreen extends StatefulWidget {
-  const DataScreen({super.key});
+class DataTemperaturaScreen extends StatefulWidget {
+  const DataTemperaturaScreen({super.key});
 
   @override
-  State<DataScreen> createState() => _DataScreenState();
+  State<DataTemperaturaScreen> createState() => _DataTemperaturaScreenState();
 }
 
-class _DataScreenState extends State<DataScreen> {
+class _DataTemperaturaScreenState extends State<DataTemperaturaScreen> {
   @override
    void initState() {
     super.initState();
@@ -26,6 +27,7 @@ class _DataScreenState extends State<DataScreen> {
   }
   @override
   Widget build(BuildContext context) {
+    int id = 2;
      final auth = Provider.of<Auth>(context, listen: false);
     final calendario = Provider.of<Calendario>(context);
      Future<void> refreshMedicoes(BuildContext context){
@@ -39,25 +41,20 @@ class _DataScreenState extends State<DataScreen> {
         title: Text("${calendario.dia}/${calendario.mes}/${calendario.ano}"),
         actions: <Widget>[
            IconButton(onPressed:(){
-            calendario.mostrarCalendario(context);
+            calendario.mostrarCalendario(context,id);
             }, icon: Icon(Icons.calendar_month))
         ],
       ),
       body: Column(
             children: [
-              Container(
-                color: Color.fromARGB(200, 255, 255, 255),
-                child: Text("OBS : pequenas alterações cardíacas isoladas podem indicar susto, atividade física intensa, entre outros. Entretanto, caso as alterações sejam frequêntes (acima de 3 no dia), é indicado marcar exame para o animal.",
-                style: TextStyle(color: Colors.black, fontSize: 15)),
-              ),
               RefreshIndicator(
                 child: const Padding(
                   padding: EdgeInsets.all(8),
-                  child: MedicoesGridBatimentos(),
+                  child: MedicoesGridTemperatura(),
                 ),
                 onRefresh: ()=>refreshMedicoes(context),
                 ),
-              TextButton(onPressed:()=> refreshMedicoes(context), child: const Text("medir em tempo real")),
+             // TextButton(onPressed:()=> refreshMedicoes(context), child: const Text("medir em tempo real")),
             ],
           ),
     );
